@@ -1,9 +1,104 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>EECS 351 Project</title>
   </head>
   <body>
-    <p>test test test</p>
+  	<h1>Project Idea Finalized</h1>
+  	<p>
+  		Gabrielle Guarino <br>
+  		Seth Perrin <br>
+  		Drew Hanley <br>
+  	</p>
+    <h2>Test Images</h2>
+    <p>
+    	From simple to more challenging.
+    </p>
+    <img src="http://i68.tinypic.com/2zqhixw.jpg">
+    <img src="http://i66.tinypic.com/25iqhwy.jpg">
+    <img src="http://i64.tinypic.com/e0pziu.jpg">
+    <img src="http://i65.tinypic.com/2rdz0vl.jpg">
+    <img src="http://i65.tinypic.com/21oxati.jpg">
+    <img src="http://i68.tinypic.com/2euudeo.jpg">
+    <img src="http://i64.tinypic.com/2rcydex.jpg">
+    <img src="http://i67.tinypic.com/552mom.jpg">
+    <img src="http://i67.tinypic.com/2mw5umv.jpg">
+    <img src="http://i63.tinypic.com/15qdzes.jpg">
+    <h2>Downsampling</h2>
+    <h3>What is downsampling?</h3>
+    <p>
+    	Downsampling creates a lower-rate sequence by keeping <br>
+    	only one out of N samples in the original signal. <br>
+    	It discards (N - 1) out of N samples and causes a loss of <br>
+    	information in the original sequence. <br>
+    	X[n] -> X[N*n] <br>
+    	X[n] = x[-2] x[1] x[0] x[1] x[2]...<br>
+    	Downsampled...<br>
+    	Xd[n] = x[-4] x[-2] x[0] x[2] x[4]...<br>
+    </p>
+    <h3>What would direct downsampling do at different rates?</h3>
+    <p>
+    	You could get any size pixels-per-inch by downsampling and <br>
+    	un-sampling back. 
+    </p>
+    <h2>Conversion</h2>
+    <h3>How to convert an image of a certain pixel count?</h3>
+    <p>
+    	An image is sized pixels by pixels. <br>
+    	A cross stitch is sized inches by inches. <br>
+    	An important value is the amount of stitches/inch the <br>
+    	cross-stitching fabric has. This is called fabric count. <br>
+    	You would downsample each row and column by a value N. <br>
+    	This N = (Pixels)/(Inches*Count) <br>
+    	Inches = the length of the height/width of the column/row. <br>
+    	Pixels = the amount of pixels in the column/row of the image. <br>
+    	Count = fabric count, or stitches/inch. <br>
+    </p>
+    <h3>Common Fabric Counts</h3>
+    <p>
+    	11, 14, 18, 28
+    </p>
+    <h2>Edge Detection</h2>
+    <p>
+    	Matlab has built-in functions that detect edges in images. <br>
+    	There are two different types. <br>
+    	The first type is called "Sobel." This type creates a new <br>
+    	image with only general outlines of shapes in it. I think this <br>
+    	type would be more relevant for our project since only the most <br>
+    	important shapes need to be outlined. <br>
+    	The second type is called "Canny." This type creates a new image <br>
+    	with basically every outline in it. This one creates an edge for any <br>discontinuity in the picture. I don't think this one would be good for <br>
+    	our project because if we were to have edge around every single <br>
+    	discontinuity, our cross-stitch would have too many outlines. The <br>
+    	actual cross-stitch would be lost. 
+    </p>
+    <h3>Matlab Code</h3>
+    <p>
+    	image = imread('');
+    	edge(image, 'type');
+    </p>
+    <h2>Color Perception</h2>
+    <p>
+    </p>
+    <h2>Reviews of Sites</h2>
+    <h3>First Site (pic2pat)</h3>
+    <p>
+    	I really liked this site. I thought it was cool how it gave you a couple <br>
+    	options at the end, so you can choose the one you prefer. <br>
+    	I'm not sure yet if I want to give the output in color blocks or in symbols. <br>
+    	This website gave the output in colored blocks, and it looked nice, but doesn't <br>
+    	look exactly like a cross-stitch pattern looks. <br>
+    	This website is pretty poorly designed also. <br>
+    	I'm thinking I will take how they handled their input, with the length/width and <br>
+    	stitches/inch. I don't want to output many cross-stich patterns at the end, only <br>
+    	one good one.
+    </p>
+    <h3>Second Site (myphotostitch)</h3>
+    <p>
+    	I liked this site less. This website only worked well for big pictures. The <br>
+    	pictures come out really tiny if you don't. It was nice how they gave you the <br>
+    	option to print out in either symbols or in colored boxes. <br>
+    	I also thought this website was poorly designed. <br>
+    </p>
   </body>
 </html>
