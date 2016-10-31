@@ -1,15 +1,44 @@
 body {
+	font-family: serif;
+}
+
+h1 {
+	color: #42315C;
 	font-family: sans-serif;
 }
 
 h2 {
 	color: #42315C;
+	font-family: sans-serif;
 }
 
 h3 {
 	color: #513C72;
+	font-family: sans-serif;
+	text-align: left;
 }
 
 img {
 	width: 500px;
+	border-color: #42315C;
+	border-width: 5px;
+	border-style: solid;
+}
+
+#icon {
+	width: 100px;
+}
+
+p {
+	text-align: left;
+}
+
+div {
+	width: 700px;
+	background-color: #A99FC5;
+	margin: auto;
+	padding: 20px;
+	border-color: #BFB5DA;
+	border-width: 10px;
+	border-style: solid;
 }
