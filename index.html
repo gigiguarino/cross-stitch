@@ -18,7 +18,7 @@
         <p>
             We are going to create a website that takes in an image and outputs a cross-stitch pattern
             of that image. We are also going to ask the user the desired size of the cross-stitch and the fabric count
-            (stitches/inch) they are using. We are going to be using mostly Matlab for this. 
+            (stitches/inch) they are using. 
         </p>
         <br>
     </div>
@@ -29,7 +29,12 @@
         <br>
         <h2>Test Images</h2>
         <p>
-            From simple to more challenging.
+            From simple to more challenging. <br>
+            I started off with a stick person to make sure we are able to accurately detect edges
+            and form the general shapes of images. I then proceeded to pixel images because these have predefined
+            boxes which should make the creation of a cross-stich easier. After these, I chose some simple images that involve
+            a main focus, or simple shapes. My hardest images, the ones that will provide the most challenge, were intricate pictures
+            of animals and scenery. 
         </p>
         <img src="http://i68.tinypic.com/2zqhixw.jpg"><br><br>
         <img src="http://i66.tinypic.com/25iqhwy.jpg"><br><br>
@@ -64,7 +69,9 @@
         <p>
             You could get any size pixels-per-inch by downsampling and 
             un-sampling back. The larger rate (or larger value of N) that you are 
-            downsampling by, the more information will be lost. 
+            downsampling by, the more information will be lost. In our case, we want this information loss. 
+            This loss of information provides us with fewer pixels to account for, thus equating pixels to stitches 
+            in the cross-stitch. 
         </p>
         <br>
     </div>
@@ -88,7 +95,10 @@
         </p>
         <h3>Common Fabric Counts</h3>
         <p>
-            11, 14, 18, 28
+            11, 14, 18, 28 <br>
+            I think this will be an option for the user to input themselves. Since we are using Matlab for 
+            everything we will be able to have variables that input to functions, and can have any values attached to
+            these variables (within reason).
         </p>
         <br>
     </div>
@@ -110,7 +120,12 @@
             discontinuity in the picture. I don't think this one would be good for 
             our project because if we were to have edge around every single 
             discontinuity, our cross-stitch would have too many outlines. The 
-            actual cross-stitch would be lost. 
+            actual cross-stitch would be lost. <br><br>
+            I think the best way to utilize this edge detection would be for creating
+            the black lines that so often surround cross-stitching shapes to better define them.
+            We will create the downsampled image, the actual cross-stitches. Then, we will create the edge
+            detected image. We will overlay this edge detected image over the downsampled image at the end
+            to create our final cross-stitch, both stitches and edges. 
         </p>
         <h3>Matlab Code</h3>
         <p>
@@ -126,6 +141,15 @@
         <br>
         <h2>Color Perception</h2>
         <p>
+            The brightness/RGB value that is stored in the pixels of a digital image is actually the square root of the
+            actual value. This has to do with the way our eyes percieve brightness. It is easier for us to detect differences in a darker
+            image than it is in a brighter one. 
+            Since we are going to be downsampling the pixel values of the image input, we are going to need to 
+            accurately combine some pixel's RGB values. Especially near edges. To get the correct value, we will need to square their values before combining them, add them together, divide by 2, and then square root them again. For example... <br>
+            Value for pixel 1: 4 (actual 16 since squared) <br>
+            Value for pixel 2: 5 (actual 25 since squared) <br>
+            Incorrect average = (4+5)/2 = 9/2 = 4.5 <br>
+            Correct average = sqrt((16+25)/2) = sqrt(41/2) = ~4.527 <br>
         </p>
         <br>
     </div>
