@@ -143,15 +143,9 @@
         <br>
         <h2>Color Perception</h2>
         <p>
-            The brightness/RGB value that is stored in the pixels of a digital image is actually the square root of the
-            actual value. This has to do with the way our eyes percieve brightness. It is easier for us to detect differences in a darker
-            image than it is in a brighter one. 
-            Since we are going to be downsampling the pixel values of the image input, we are going to need to 
-            accurately combine some pixel's RGB values. Especially near edges. To get the correct value, we will need to square their values before combining them, add them together, divide by 2, and then square root them again. For example... <br>
-            Value for pixel 1: 4 (actual 16 since squared) <br>
-            Value for pixel 2: 5 (actual 25 since squared) <br>
-            Incorrect average = (4+5)/2 = 9/2 = 4.5 <br>
-            Correct average = sqrt((16+25)/2) = sqrt(41/2) = ~4.527 <br>
+            Our eyes percieve the relative brightness of colors. The scale is roughly logarithmic, not linear. Computers store brightness values on a scale that matches our perception (by taking the square root of the actual brightness value). <br><br>
+            Pixels are represented by 3 numbers, their RGB values. When working with these pixel values, we will need to square them before performing operations, and then take the square root after performing the operation. <br><br>
+            We are going to be manipulating these color values in images because not all colors will be able to be represented in a cross-stich. We will have to round certain colors up or down to achieve one within a range. 
         </p>
         <br>
     </div>
