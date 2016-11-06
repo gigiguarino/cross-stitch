@@ -131,10 +131,17 @@
         </p>
         <h3>Matlab Code</h3>
         <p>
-            image = imread(''); <br>
-            edge(image, 'type');
+            I = imread('flower.jpg'); <br>
+            BW1 = edge(I(:,:,1),'sobel',.12); <br>
+            BW2 = edge(I(:,:,1),'sobel'); <br>
+            BW3 = edge(I(:,:,3),'canny'); <br>
+            figure; <br>
+            imshowpair(BW1,BW2,'montage'); <br>
+            figure; <br>
+            imshow(BW3); <br><br><br>
+            * I wasn't able to display the images given to me by my group member because they were a weird format. *
         </p>
-        <br>
+        
     </div>
 
     <br><br>
