@@ -197,8 +197,8 @@
 		<div class="underline"></div>
 		<p>
 			So far, we have figured out how to edge detect on each of the RBG layers of an image and combine them. <br><br>
-			We have also started the process of upsampling an image and then downsampling to get the desired stitches/inch and the desired height and width. <br>
-			The only way we have done it so far is with the upsample and downsample functions. We upsample our height by (fabric count * height in inches) and downsample the height by the original pixel height of the image. We do the same for the width but with the corresponding width values. <br>
+			We have also started the process of upsampling an image and then downsampling to get the desired stitches/inch and the desired height and width. <br><br>
+			The only way we have done it so far is with the upsample and downsample functions. We upsample our height by (fabric count * height in inches) and downsample the height by the original pixel height of the image. We do the same for the width but with the corresponding width values. <br><br>
 			The way that this upsamples is by placing in zeros, but we want to place in the nearest value in the newly sampled spots, so we are going to need to create a Matlab function to do this. <br>
 		</p>
 		<div class="underline"></div>
