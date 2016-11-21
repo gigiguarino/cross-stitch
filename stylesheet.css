@@ -29,6 +29,12 @@ h3 {
 	font-size: 20px;
 }
 
+h4 {
+	font-family: monospace;
+	color: #181818;
+	font-size: 15px;
+}
+
 .names {
 	font-family: serif;
 	font-weight: normal;
@@ -57,6 +63,11 @@ img {
 .edge-detect2 {
 	display: inline-block;
 	height: 200px;
+}
+
+.sample1 {
+	display: inline-block;
+	height: 300px;
 }
 
 
