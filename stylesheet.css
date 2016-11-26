@@ -88,10 +88,23 @@ p {
 
 /* links */
 
-a.button {
+
+a.button1 {
 	text-decoration: none;
 	color: #181818;
 	font-size: 14px;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #FFFFFF;
+}
+
+.project-button {
+	text-decoration: none;
+	color: #181818;
+	font-size: 35px;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -104,11 +117,25 @@ a.button {
 	font-weight: bold;
 }
 
+.submit-button {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: monospace;
+	padding: 10px;
+	color: #181818;
+	width: 150px;
+	border-color: #313131;
+	background-color: #ECC3B8;
+	border-width: 8px;
+	border-style: solid;
+	border-radius: 18px;
+}
+
 
 
 /* divs */
 
-div.button {
+div.button1 {
 	display: inline-block;
 	height: 40px;
 	width: 150px;
@@ -120,10 +147,42 @@ div.button {
 	border-radius: 18px;
 }
 
+div.project-button {
+	display: inline-block;
+	height: 40px;
+	width: 175px;
+	padding: 10px;
+	background-color: #ECC3B8;
+	border-color: #313131;
+	border-width: 8px;
+	border-style: solid;
+	border-radius: 18px;
+}
+
+div.home-button {
+	display: inline-block;
+	height: 40px;
+	width: 150px;
+	padding: 10px;
+	background-color: #ECC3B8;
+	border-color: #313131;
+	border-width: 8px;
+	border-style: solid;
+	border-radius: 18px;
+}
+
+div.buttons {
+	width: 1000px;
+	display: block;
+	margin: auto;
+}
+
 
 .empty {
 	display: inline-block;
-	width: 50px;
+	width: 30px;
+	height: 40px;
+	top: 0px;
 }
 
 .underline {
@@ -145,4 +204,14 @@ div.button {
 	border-width: 5px;
 	border-style: solid;
 	border-radius: 15px;
+}
+
+div.form1 {
+	display: inline-block;
+	text-align: right;
+	font-size: 20px;
+}
+
+div.form2 {
+	display: inline-block;
 }

@@ -10,6 +10,9 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/report2', {
 			templateUrl: 'report2.html'
 		})
+		.when('/project',{
+			templateUrl: 'project.html'
+		})
 		.otherwise( {
 			redirectTo: '/home'
 		});
