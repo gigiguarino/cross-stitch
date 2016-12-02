@@ -14,27 +14,62 @@
 	<div class="display">
 		<br>
 		<div class="underline"></div>
+		<h2>Inputs</h2>
+		<div class="underline"></div>
 		<br>
 		<p>
-			*******
-			need to check and make sure user inputs numbers for the last three boxes
-			*******
+			<ul>
+				<li>A link to your image.</li>
+				<li>The maximum height and width of your desired cross-stitch, in inches.</li>
+				<li>Your fabric count (stitches/inch). Typical fabric counts: 12, 14, 16, 18. Please not larger than 20.</li>
+				<li>The number of different colors you want in your cross-stitch. Please only values in between 1 and 10.</li>
+				<li>If you want your pattern output to be in symbols, check the box.</li>
+				<li>If you want your pattern output to be in colored boxes, check the box. (You can check both boxes)</li>
+			</ul>
 		</p>
-		<form align="center">
-			<div class="form1">
-				Link to image: <br>
-				Maximum height of cross-stitch (inches): <br>
-				Maximum width of cross-stitch (inches): <br>
-				Fabric count (stitches/inch): <br>
+		<br>
+		<form>
+			<div class="smaller-underline"></div><br>
+			<div class="form1" align="left">
+				Link to image:<br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="image-link"> <br>
-				<input type="text" name="max-height"> <br>
-				<input type="text" name="max-width"> <br>
-				<input type="text" name="fabric-count"> <br>
+				<input type="text" name="image-link"><br><br>
+			</div>
+			<div class="smaller-underline"></div><br>
+			<div class="form1" align="left">
+				Maximum height of cross-stitch (inches):<br><br>
+				Maximum width of cross-stitch (inches):<br><br>
+			</div>
+			<div class="form2">
+				<input type="text" name="max-height"><br><br>
+				<input type="text" name="max-width"><br><br>
+			</div>
+			<div class="smaller-underline"></div><br>
+			<div class="form1" align="left">
+				Fabric count:<br><br>
+				Number of colors (1-10): <br><br>
+			</div>
+			<div class="form2">
+				<input type="text" name="fabric-count"><br><br>
+				<input type="text" name="num_colors"><br><br>
+			</div>
+			<div class="smaller-underline"></div><br>
+			<div class="form1">
+				Symbols?<br><br>
+				Colored boxes?<br><br>
+			</div>
+			<div class="form2">
+				<input type="checkbox" name="symbol-enable"><br><br>
+				<input type="checkbox" name="colored-enable"><br><br>
+			</div>
+			<div class="smaller-underline"></div>
+			<br><br><br><br>
+			<div align="center">
+				<input class="submit-button" type="submit">
+				<input class="submit-button" type="reset">
 			</div>
 			<br><br>
-			<input class="submit-button" type="submit">
 		</form>
 		<br><br>
 		~Loading image~
@@ -52,7 +87,7 @@
 		~Your image~
 		<br><br>
 		<div class="underline"></div>
-		<h3>Your cross-stitch:</h3>
+		<h3>Your cross-stitch pattern(s):</h3>
 		<div class="underline"></div>
 		<br>
 		~Output~
@@ -60,4 +95,5 @@
 		<div class="underline"></div>
 		<br>
 	</div>
+	<br><br>
 </div>
