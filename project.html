@@ -28,13 +28,13 @@
 			</ul>
 		</p>
 		<br>
-		<form>
+		<form id="my-form" onsubmit="submit_func()">
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
 				Link to image:<br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="image-link"><br><br>
+				<input type="text" name="image-link" id="image-link"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
@@ -42,8 +42,8 @@
 				Maximum width of cross-stitch (inches):<br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="max-height"><br><br>
-				<input type="text" name="max-width"><br><br>
+				<input type="text" name="max-height" id="max-height"><br><br>
+				<input type="text" name="max-width" id="max-width"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
@@ -51,8 +51,8 @@
 				Number of colors (1-10): <br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="fabric-count"><br><br>
-				<input type="text" name="num_colors"><br><br>
+				<input type="text" name="fabric-count" id="fabric-count"><br><br>
+				<input type="text" name="num_colors" id="num-colors"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
 			<div class="form1">
@@ -60,8 +60,8 @@
 				Colored boxes?<br><br>
 			</div>
 			<div class="form2">
-				<input type="checkbox" name="symbol-enable"><br><br>
-				<input type="checkbox" name="colored-enable"><br><br>
+				<input type="checkbox" name="symbol-enable" id="symbol-enable"><br><br>
+				<input type="checkbox" name="color-enable" id="color-enable"><br><br>
 			</div>
 			<div class="smaller-underline"></div>
 			<br><br><br><br>

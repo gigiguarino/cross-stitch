@@ -97,24 +97,32 @@ a.button1 {
 	font-weight: bold;
 }
 
+a.project-button {
+	text-decoration: none;
+	color: #181818;
+	font-size: 30px;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+a.presentation-button {
+	text-decoration: none;
+	color: #181818;
+	font-size: 30px;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+a.home-button {
+	font-size: 30px;
+	text-decoration: none;
+	color: #181818;
+	font-family: monospace;
+	font-weight: bold;
+}
+
 a:hover {
 	color: #FFFFFF;
-}
-
-.project-button {
-	text-decoration: none;
-	color: #181818;
-	font-size: 35px;
-	font-family: monospace;
-	font-weight: bold;
-}
-
-.home-button {
-	font-size: 35px;
-	text-decoration: none;
-	color: #181818;
-	font-family: monospace;
-	font-weight: bold;
 }
 
 .submit-button {
@@ -131,6 +139,16 @@ a:hover {
 	border-width: 8px;
 	border-style: solid;
 	border-radius: 18px;
+}
+
+input[type="submit"]:hover{
+	color: white;
+	cursor: pointer;
+}
+
+input[type="reset"]:hover {
+	color: white;
+	cursor: pointer;
 }
 
 
@@ -154,7 +172,7 @@ input {
 div.button1 {
 	display: inline-block;
 	height: 40px;
-	width: 150px;
+	width: 100px;
 	padding: 10px;
 	background-color: #ECC3B8;
 	border-color: #313131;
@@ -165,8 +183,24 @@ div.button1 {
 
 div.project-button {
 	display: inline-block;
-	height: 40px;
-	width: 175px;
+	position: relative;
+	top: 0px;
+	height: 100%;
+	width: 150px;
+	padding: 10px;
+	background-color: #ECC3B8;
+	border-color: #313131;
+	border-width: 8px;
+	border-style: solid;
+	border-radius: 18px;
+}
+
+div.presentation-button {
+	display: inline-block;
+	position: relative;
+	top: 0px;
+	height: 100%;
+	width: 225px;
 	padding: 10px;
 	background-color: #ECC3B8;
 	border-color: #313131;
@@ -177,7 +211,9 @@ div.project-button {
 
 div.home-button {
 	display: inline-block;
-	height: 40px;
+	position: relative;
+	top: 0px;
+	height: 100%;
 	width: 150px;
 	padding: 10px;
 	background-color: #ECC3B8;
@@ -188,17 +224,16 @@ div.home-button {
 }
 
 div.buttons {
-	width: 1000px;
 	display: block;
-	margin: auto;
+	height: 40px;
+	padding: 20px;
 }
 
 
 .empty {
 	display: inline-block;
-	width: 30px;
+	width: 40px;
 	height: 40px;
-	top: 0px;
 }
 
 .underline {

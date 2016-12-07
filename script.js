@@ -1,4 +1,5 @@
 var app = angular.module('project351', ['ngRoute']);
+
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/home', {
@@ -13,6 +14,9 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/project',{
 			templateUrl: 'project.html'
 		})
+		.when('/presentation',{
+			templateUrl: 'presentation.html'
+		})
 		.otherwise( {
 			redirectTo: '/home'
 		});
@@ -20,4 +24,5 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller('main-controller', ['$scope', function($scope){
 }]);
+
 
