@@ -19,16 +19,14 @@
 		<br>
 		<p>
 			<ul>
-				<li>A link to your image.</li>
-				<li>The maximum height and width of your desired cross-stitch, in inches.</li>
-				<li>Your fabric count (stitches/inch). Typical fabric counts: 12, 14, 16, 18. Please not larger than 20.</li>
-				<li>The number of different colors you want in your cross-stitch. Please only values in between 1 and 10.</li>
-				<li>If you want your pattern output to be in symbols, check the box.</li>
-				<li>If you want your pattern output to be in colored boxes, check the box. (You can check both boxes)</li>
+				<li>A link to your image (http://www)</li>
+				<li>The maximum height and width of your desired cross-stitch, in inches</li>
+				<li>Your fabric count (stitches/inch)</li>
+				<li>The number of different colors you want in your cross-stitch. Please only values in between 1 and 20</li>
 			</ul>
 		</p>
 		<br>
-		<form id="my-form" onsubmit="submit_func()">
+		<form id="form">
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
 				Link to image:<br><br>
@@ -55,15 +53,6 @@
 				<input type="text" name="num_colors" id="num-colors"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
-			<div class="form1">
-				Symbols?<br><br>
-				Colored boxes?<br><br>
-			</div>
-			<div class="form2">
-				<input type="checkbox" name="symbol-enable" id="symbol-enable"><br><br>
-				<input type="checkbox" name="color-enable" id="color-enable"><br><br>
-			</div>
-			<div class="smaller-underline"></div>
 			<br><br><br><br>
 			<div align="center">
 				<input class="submit-button" type="submit">
@@ -72,7 +61,7 @@
 			<br><br>
 		</form>
 		<br><br>
-		~Loading image~
+		<img id="loading-gif" src="http://i64.tinypic.com/255juc2.gif">
 		<br><br>
 		<div class="underline"></div>
 		<br>

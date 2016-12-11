@@ -1,0 +1,264 @@
+<div>
+	<div class="display">
+		<br>
+		<div class="underline"></div>
+		<h1>Documentation</h1>
+		<div class="underline"></div>
+		<p>
+			For this project we used Matlab, Python, HTML, CSS, and JavaScript. <br>
+			Matlab for the image processing. <br>
+			Python to call Matlab and process the user inputs. <br>
+			HTML and CSS for the website design. <br>
+			JavaScript for the input submission and to call the Python scripts. <br>
+		</p>
+		<div class="underline"></div>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>cross_stitch.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function calls all the other functions needed to create the cross-stitch. 
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function [stitch, indexed, map] = cross_stitch(image, new_height, new_width)<br>
+			&#8195;&#8195;stitch = sample(image, new_height, new_width);<br>
+			&#8195;&#8195;filt_stitch = imguidedfilter(stitch);<br>
+			&#8195;&#8195;[indexed, map] = rgb2ind(filt_stitch, num_colors);<br>
+			&#8195;&#8195;indexed = one_filter(indexed);<br>
+			&#8195;&#8195;figure;<br>
+			&#8195;&#8195;imagesc(indexed);<br>
+			&#8195;&#8195;colormap(map);<br>
+			&#8195;&#8195;add_grid(new_height, new_width);<br>
+			&#8195;&#8195;symbol_image = symbols(indexed);<br>
+			&#8195;&#8195;dlmwrite('symbols.txt', symbol_image, ' ');<br>
+			end<br>
+		</p>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>sample.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function calls the downsample and upsample functions.
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function new_image = sample(image, height_out, width_out)<br>
+			&#8195;&#8195;sizes = size(image);<br>
+			&#8195;&#8195;height_in = sizes(1);<br>
+			&#8195;&#8195;width_in = sizes(2);<br>
+			&#8195;&#8195;dim = sizes(3);<br>
+			&#8195;&#8195;new_image = down_sample(imgaussfilt(up_sample(image, dim, height_out, width_out), 1), dim, height_in, width_in);<br>
+			end<br>
+		</p>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>up_sample.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function upsamples the original image to a larger size so when we want to downsample to our desired size we are always downsampling by an integer rate. This is called multirate sampling.
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function up_sampled = up_sample(image, dim, height_mult, width_mult)<br>
+			&#8195;&#8195;sizes = size(image);<br>
+			&#8195;&#8195;height_in = sizes(1);<br>
+			&#8195;&#8195;width_in = sizes(2);<br>
+			&#8195;&#8195;tic<br>
+			&#8195;&#8195;temp = uint8(0);<br>
+			&#8195;&#8195;up_sample_temp(height_in, width_mult * width_in) = temp;<br>
+			&#8195;&#8195;toc<br>
+			&#8195;&#8195;for row = (1:height_in)<br>
+			&#8195;&#8195;&#8195;&#8195;for col = (1:width_in)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;for us_col = (1:width_mult)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;for color = (1:dim)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;up_sample_temp(row, (width_mult*(col-1)+us_col), color) = image(row, col, color);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			&#8195;&#8195;toc<br>
+			&#8195;&#8195;up_sampled(height_in*height_mult, width_in*width_mult) = temp;<br>
+			&#8195;&#8195;toc<br>
+			&#8195;&#8195;for col = (1:(width_in*width_mult))<br>
+			&#8195;&#8195;&#8195;&#8195;for row = (1:height_in)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;for us_row = (1:height_mult)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;for color = (1:dim)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;up_sampled((height_mult*(row-1)+us_row), col, color) = up_sample_temp(row, col, color);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			&#8195;&#8195;toc<br>
+			end<br>
+		</p>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>down_sample.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function downsamples the upsampled cross-stitch to the final desired size. 
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function down_sampled = down_sample(image, dim, height_div, width_div)<br>
+			&#8195;&#8195;sizes = size(image);<br>
+			&#8195;&#8195;height_in = sizes(1);<br>
+			&#8195;&#8195;width_in = sizes(2);<br>
+			&#8195;&#8195;height_out = height_in / height_div;<br>
+			&#8195;&#8195;width_out = width_in / width_div; <br>
+			&#8195;&#8195;temp = uint8(0);<br>
+			&#8195;&#8195;down_sampled(height_out, width_out) = temp;<br>
+			&#8195;&#8195;for row = (1:height_out)<br>
+			&#8195;&#8195;&#8195;&#8195;for col = (1:width_out)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;for color = (1:dim)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;down_sampled(row, col, color) = image(row*height_div, col*width_div, color);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			end<br>
+		</p>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>one_filter.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function filters the cross-stitch pattern. It removes pixels that aren't surrounded by similar pixels (ex: islands, jagged lines). Its goal is to have a smoother cross-stitch image, while also trying to keep important pixels in place. 
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function indexed = one_filter(indexed)<br>
+			&#8195;&#8195;sizes = size(indexed);<br>
+			&#8195;&#8195;temp = unint8(0);<br>
+			&#8195;&#8195;surrounding(9) = temp;<br>
+			&#8195;&#8195;for row = (3:sizes(1)-2)<br>
+			&#8195;&#8195;&#8195;&#8195;for col = (3:sizes(2)-2)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(1) = indexed(row-1, col-1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(2) = indexed(row-1, col);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(3) = indexed(row-1, col+1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(4) = indexed(row, col-1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(5) = indexed(row, col);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(6) = indexed(row, col+1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(7) = indexed(row+1, col-1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(8) = indexed(row+1, col);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;surrounding(9) = indexed(row+1, col+1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;num_match = 0; <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;for i = (1:9)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;if (i ~= 5)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;if (surrounding(i) == surrounding(5))<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;num_match = num_match+1;<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;one = surrounding(1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;two = surrounding(2);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;three = surrounding(3);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;four = surrounding(4);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;five = surrounding(5);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;six = surrounding(6);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;seven = surrounding(7);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;eight = surrounding(8);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;nine = surrounding(9);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;if (one == two && one == three && one == four && <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;one == six && one == seven && one == eight && one == nine)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = surrounding(1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;elseif (num_match == 0)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = mode(surrounding);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;elseif (num_match == 1 && five ~= two && five ~= four && <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;five ~= six && five ~= eight)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = mode(surrounding);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;elseif (one == two && one == three && one == four && <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;one == six && one ~= five && one ~= seven && one ~= nine)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = surrounding(1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;elseif (one == two && one == four && one == seven && <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;one == eight && one ~= five && one ~= three && one ~= nine)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = surronding(1);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;elseif (four == seven && four == eight && four == nine && <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;four == six && four ~= five && four ~= one && four ~= three)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = surrounding(4);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;elseif (two == three && two == six && two == eight && <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;two == nine && two ~= five && two ~= seven && two ~= one)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = surrounding(2);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;else <br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;indexed(row, col) = surrounding(5);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			end<br>
+		</p>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>add_grid.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function overlays a grid on top of the newly sampled cross-stitch image. This grid is necessary on cross-stitch patterns so the cross-stitchers are easily able to keep track of where they are. Every 10th line is thicker for quick counting.
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function add_grid()<br>
+			&#8195;&#8195;hold on <br>
+			&#8195;&#8195;dark = [.3 .3 .3];<br>
+			&#8195;&#8195;light = [.8 .8 .8];<br>
+			&#8195;&#8195;for i = (1:height)<br>
+			&#8195;&#8195;&#8195;&#8195;z = i-0.5;<br>
+			&#8195;&#8195;&#8195;&#8195;if (mod(i, 10) == 0)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;line([1 width], [z z], 'Color', dark);<br>
+			&#8195;&#8195;&#8195;&#8195;else<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;line([1 width], [z z], 'Color', dark, 'LineStyle', '-');<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;line([1 width], [z z], 'Color', light, 'LineStyle', '--');<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			&#8195;&#8195;for i = (1:width)<br>
+			&#8195;&#8195;&#8195;&#8195;z = i-0.5;<br>
+			&#8195;&#8195;&#8195;&#8195;if (mod(i,10) == 0)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;line([z z], [1 height], 'Color', dark);<br>
+			&#8195;&#8195;&#8195;&#8195;else<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;line([z z], [1 height], 'Color', dark, 'LineStyle', '-');<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;line([z z], [1 height], 'Color', light, 'LineStyle', '--');<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			end<br>
+		</p>
+	</div>
+	<br><br>
+	<div class="display">
+		<div class="underline"></div>
+		<h2>symbols.m</h2>
+		<div class="underline"></div>
+		<p>
+			This function takes the indexed array we get from our sampled image and turns the color indexes into corresponding symbols. The indexed array has different numbers for each of the different colored pixels. The number of colors can't exceed 15, so we only need that many symbols as well.
+		</p>
+		<div class="underline"></div>
+		<p class="code">
+			function symbol_image = symbols(image)<br>
+			&#8195;&#8195;symbol_dict = ['0', '#', '&', 'X', '-', '$', '*', 'Z', 'I', '%', '+', '^', '<', 'H', '!'];<br>
+			&#8195;&#8195;sizes = size(image);<br>
+			&#8195;&#8195;height = sizes(1);<br>
+			&#8195;&#8195;width = sizes(2);<br>
+			&#8195;&#8195;symbol_image = zeros(height, width);<br>
+			&#8195;&#8195;symbol_image = char(symbol_image);<br>
+			&#8195;&#8195;for i = (1:height)<br>
+			&#8195;&#8195;&#8195;&#8195;for j = (1:width)<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;num = image(i,j);<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;num = num + 1;<br>
+			&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;symbol_image(i,j) = symbol_dict(num);<br>
+			&#8195;&#8195;&#8195;&#8195;end<br>
+			&#8195;&#8195;end<br>
+			end<br>
+		</p>
+	</div>
+</div>
+
+

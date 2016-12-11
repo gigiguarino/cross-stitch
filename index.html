@@ -5,21 +5,30 @@
     <title>Cross-stitch project</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="script2.js"></script>
     <script src="script.js"></script>
-    <script src="submit_input.js"></script>
   </head>
   <body ng-app="project351">
     <br>
     <div class="buttons" align="center">
-      <div class="home-button">
-        <a class="home-button" href="#home">About</a>
+      <div class="button">
+        <a class="button" href="#home">About</a>
       </div>
       <div class="empty"></div>
-      <div class="project-button">
-        <a class="project-button" href="#project">Project</a>
+      <div class="button project-button">
+        <a class="button" href="#project">Project</a>
+      </div>
+      <div class="empty"></div>
+      <div class="button documentation-button">
+        <a class="button" href="#code">Documentation</a>
+      </div>
+      <div class="empty"></div>
+      <div class="button">
+        <a class="button" href="#info">Info</a>
       </div>
     </div>
-    <br><br>
+    <br><br><br><br><br><br><br><br>
     <div ng-controller="main-controller">
       <div ng-view></div>
     </div>

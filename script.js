@@ -3,7 +3,7 @@ var app = angular.module('project351', ['ngRoute']);
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/home', {
-			templateUrl: 'blank.html'
+			templateUrl: 'home.html'
 		})
 		.when('/report1', {
 			templateUrl: 'report1.html'
@@ -14,8 +14,14 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/project',{
 			templateUrl: 'project.html'
 		})
-		.when('/presentation',{
+		.when('/presentation', {
 			templateUrl: 'presentation.html'
+		})
+		.when('/code', {
+			templateUrl: 'code.html'
+		})
+		.when('/info', {
+			templateUrl: 'info.html'
 		})
 		.otherwise( {
 			redirectTo: '/home'

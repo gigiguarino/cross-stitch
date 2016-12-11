@@ -57,8 +57,8 @@ function submit_func(){
 		error_print += "Your number of colors is not a number\n";
 		error_found = 1;
 	} else {
-		if (num_colors > 10 || num_colors <= 0) {
-			error_print += "Your number of colors is not in desired range: 1 - 10\n";
+		if (num_colors > 15 || num_colors <= 0) {
+			error_print += "Your number of colors is not in desired range: 1 - 15\n";
 			error_found = 1;
 		} else {
 			valid_print += "Num colors: ";

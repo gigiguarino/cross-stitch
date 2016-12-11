@@ -1,10 +1,12 @@
 
 
+
+
 /* headings */
 
 body {
 	font-family: serif;
-	background-color: #A67264;
+	background-color: #C69588;
 }
 
 h1 {
@@ -43,6 +45,11 @@ h4 {
 }
 
 
+
+
+
+
+
 /* images */
 
 img {
@@ -50,9 +57,17 @@ img {
 	height: 130px;
 }
 
-.center {
+img.center {
+	display: block;
+	width: 400px;
+	height: 100%;
+	margin: auto;
+}
+
+#loading-gif {
 	display: block;
 	margin: auto;
+	visibility: hidden;
 }
 
 .edge-detect1 {
@@ -72,6 +87,11 @@ img {
 
 
 
+
+
+
+
+
 /* paragraphs */
 
 p {
@@ -84,15 +104,23 @@ p {
 	color: #581A09;
 }
 
+.caption {
+	font-size: 12px;
+	text-align: center;
+}
+
+
+
+
 
 
 /* links */
 
 
-a.button1 {
+a.button {
 	text-decoration: none;
 	color: #181818;
-	font-size: 14px;
+	font-size: 26px;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -135,11 +163,19 @@ a:hover {
 	width: 150px;
 	height: 80px;
 	border-color: #313131;
-	background-color: #ECC3B8;
+	background-color: #D0D0D0;
 	border-width: 8px;
 	border-style: solid;
 	border-radius: 18px;
 }
+
+
+
+
+
+
+
+/* input */
 
 input[type="submit"]:hover{
 	color: white;
@@ -151,8 +187,6 @@ input[type="reset"]:hover {
 	cursor: pointer;
 }
 
-
-/* input */
 input {
 	border-color: black;
 	border-style: solid;
@@ -167,14 +201,17 @@ input {
 
 
 
+
+
+
 /* divs */
 
-div.button1 {
+div.button {
 	display: inline-block;
 	height: 40px;
 	width: 100px;
 	padding: 10px;
-	background-color: #ECC3B8;
+	background-color: #D0D0D0;
 	border-color: #313131;
 	border-width: 8px;
 	border-style: solid;
@@ -182,51 +219,26 @@ div.button1 {
 }
 
 div.project-button {
-	display: inline-block;
-	position: relative;
-	top: 0px;
-	height: 100%;
 	width: 150px;
-	padding: 10px;
-	background-color: #ECC3B8;
-	border-color: #313131;
-	border-width: 8px;
-	border-style: solid;
-	border-radius: 18px;
 }
 
-div.presentation-button {
-	display: inline-block;
-	position: relative;
-	top: 0px;
-	height: 100%;
-	width: 225px;
-	padding: 10px;
-	background-color: #ECC3B8;
-	border-color: #313131;
-	border-width: 8px;
-	border-style: solid;
-	border-radius: 18px;
-}
-
-div.home-button {
-	display: inline-block;
-	position: relative;
-	top: 0px;
-	height: 100%;
-	width: 150px;
-	padding: 10px;
-	background-color: #ECC3B8;
-	border-color: #313131;
-	border-width: 8px;
-	border-style: solid;
-	border-radius: 18px;
+div.documentation-button {
+	width: 200px;
 }
 
 div.buttons {
 	display: block;
-	height: 40px;
+	position: fixed;
+	z-index: 100;
+	height: 80px;
+	top: 0px;
+	left: -10px;
+	width: 100%;
 	padding: 20px;
+	background-color: #454545;
+	border-bottom-width: 10px;
+	border-bottom-style: solid;
+	border-bottom-color: #313131;
 }
 
 
@@ -240,7 +252,7 @@ div.buttons {
 	display: block;
 	position: relative;
 	left: -20px;
-	width: 740px;
+	width: 840px;
 	height: 14px;
 	background-color: #313131;
 }
@@ -249,14 +261,14 @@ div.buttons {
 	display: block;
 	position: relative;
 	left: -20px;
-	width: 740px;
+	width: 840px;
 	height: 7px;
 	background-color: #313131;
 }
 
 .display {
 	display: block;
-	width: 700px;
+	width: 800px;
 	background-color: #FFFFFF; 
 	margin: auto;
 	padding: 20px;
