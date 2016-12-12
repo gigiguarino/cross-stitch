@@ -7,27 +7,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     <script src="script.js"></script>
   </head>
-  <body ng-app="project351">
+  <body ng-app="project351" ng-controller="main-controller">
     <br>
     <div class="buttons" align="center">
       <div class="button">
-        <a class="button" href="#home">Home</a>
+        <a class="button" href="#home" ng-click="scroll_top()">Home</a>
       </div>
       <div class="empty"></div>
       <div class="button project-button">
-        <a class="button" href="#project">Create!</a>
+        <a class="button" href="#project" ng-click="scroll_top()">Create!</a>
       </div>
       <div class="empty"></div>
       <div class="button documentation-button">
-        <a class="button" href="#code">Documentation</a>
+        <a class="button" href="#code" ng-click="scroll_top()">Documentation</a>
       </div>
       <div class="empty"></div>
       <div class="button">
-        <a class="button" href="#info">Info</a>
+        <a class="button" href="#info" ng-click="scroll_top()">Info</a>
       </div>
     </div>
     <br><br><br><br><br><br><br><br>
-    <div ng-controller="main-controller">
+    <div ng-cloak>
       <div ng-view></div>
     </div>
     <br><br><br><br><br><br><br><br>

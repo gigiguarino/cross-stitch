@@ -1,11 +1,12 @@
-<div>
+<div ng-controller="py-controller">
 	<div class="display">
 		<br>
 		<div class="underline"></div>
 		<h1>Image to Cross-stitch Pattern Converter</h1>
 		<div class="underline"></div>
 		<p>
-			To convert an image to a cross-stitch pattern, you need to input the link to the image, the maximum height and width of your desired cross-stitch, and the count of the fabric you are using. To avoid distortion of your image, we will scale your image to fit inside your desired height and width. 
+			To convert an image to a cross-stitch pattern, you need to input the link to the image, the maximum height and width of your desired cross-stitch, and the count of the fabric you are using. To avoid distortion of your image, we will scale your image to fit inside your desired height and width. <br><br>
+			JPEGs only please
 		</p>
 		<div class="underline"></div>
 		<br>
@@ -22,17 +23,17 @@
 				<li>A link to your image (http://www)</li>
 				<li>The maximum height and width of your desired cross-stitch, in inches</li>
 				<li>Your fabric count (stitches/inch)</li>
-				<li>The number of different colors you want in your cross-stitch. Please only values in between 1 and 20</li>
+				<li>The number of different colors you want in your cross-stitch. </li>
 			</ul>
 		</p>
 		<br>
-		<form id="form" ng-submit="submit()">
+		<form ng-submit="submit()">
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
 				Link to image:<br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="image-link" id="image-link"><br><br>
+				<input type="text" ng-model="imglink"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
@@ -40,8 +41,8 @@
 				Maximum width of cross-stitch (inches):<br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="max-height" id="max-height"><br><br>
-				<input type="text" name="max-width" id="max-width"><br><br>
+				<input type="text" ng-model="maxheight"><br><br>
+				<input type="text" ng-model="maxwidth"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
 			<div class="form1" align="left">
@@ -49,14 +50,14 @@
 				Number of colors (1-10): <br><br>
 			</div>
 			<div class="form2">
-				<input type="text" name="fabric-count" id="fabric-count"><br><br>
-				<input type="text" name="num_colors" id="num-colors"><br><br>
+				<input type="text" ng-model="fabriccount"><br><br>
+				<input type="text" ng-model="numcolors"><br><br>
 			</div>
 			<div class="smaller-underline"></div><br>
 			<br><br>
 			<div align="center">
 				<input class="submit-button" type="submit">
-				<input class="submit-button" type="reset">
+				<input class="submit-button" ng-click="reset()" type="reset">
 			</div>
 			<br>
 		</form>
@@ -84,5 +85,4 @@
 		<div class="underline"></div>
 		<br>
 	</div>
-	<br><br><br><br><br>
 </div>
