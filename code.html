@@ -36,6 +36,8 @@
 			&#8195;&#8195;dlmwrite('symbols.txt', symbol_image, ' ');<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 	<br><br>
 	<div class="display">
@@ -55,6 +57,8 @@
 			&#8195;&#8195;new_image = down_sample(imgaussfilt(up_sample(image, dim, height_out, width_out), 1), dim, height_in, width_in);<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 	<br><br>
 	<div class="display">
@@ -62,7 +66,7 @@
 		<h2>up_sample.m</h2>
 		<div class="underline"></div>
 		<p>
-			This function upsamples the original image to a larger size so when we want to downsample to our desired size we are always downsampling by an integer rate. This is called multirate sampling.
+			This function upsamples the original image to a larger size so when we want to downsample to our desired size we are always downsampling by an integer rate.
 		</p>
 		<div class="underline"></div>
 		<p class="code">
@@ -98,6 +102,8 @@
 			&#8195;&#8195;toc<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 	<br><br>
 	<div class="display">
@@ -126,6 +132,8 @@
 			&#8195;&#8195;end<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 	<br><br>
 	<div class="display">
@@ -133,7 +141,7 @@
 		<h2>one_filter.m</h2>
 		<div class="underline"></div>
 		<p>
-			This function filters the cross-stitch pattern. It removes pixels that aren't surrounded by similar pixels (ex: islands, jagged lines). Its goal is to have a smoother cross-stitch image, while also trying to keep important pixels in place. 
+			This function filters the cross-stitch pattern. 
 		</p>
 		<div class="underline"></div>
 		<p class="code">
@@ -196,6 +204,8 @@
 			&#8195;&#8195;end<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 	<br><br>
 	<div class="display">
@@ -203,7 +213,7 @@
 		<h2>add_grid.m</h2>
 		<div class="underline"></div>
 		<p>
-			This function overlays a grid on top of the newly sampled cross-stitch image. This grid is necessary on cross-stitch patterns so the cross-stitchers are easily able to keep track of where they are. Every 10th line is thicker for quick counting.
+			This function overlays a grid on top of the newly sampled cross-stitch image.
 		</p>
 		<div class="underline"></div>
 		<p class="code">
@@ -231,6 +241,8 @@
 			&#8195;&#8195;end<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 	<br><br>
 	<div class="display">
@@ -238,7 +250,7 @@
 		<h2>symbols.m</h2>
 		<div class="underline"></div>
 		<p>
-			This function takes the indexed array we get from our sampled image and turns the color indexes into corresponding symbols. The indexed array has different numbers for each of the different colored pixels. The number of colors can't exceed 15, so we only need that many symbols as well.
+			This function takes the indexed array we get from our sampled image and turns the color indexes into corresponding symbols. 
 		</p>
 		<div class="underline"></div>
 		<p class="code">
@@ -258,6 +270,8 @@
 			&#8195;&#8195;end<br>
 			end<br>
 		</p>
+		<div class="underline"></div>
+		<br>
 	</div>
 </div>
 

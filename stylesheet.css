@@ -6,7 +6,9 @@
 
 body {
 	font-family: serif;
-	background-color: #C69588;
+	background-image: url(http://i64.tinypic.com/14dexxy.jpg);
+	background-repeat: repeat;
+	background-size: 500px;
 }
 
 h1 {
@@ -54,6 +56,8 @@ h4 {
 
 img {
 	display: inline-block;
+	position: relative;
+	vertical-align: middle;
 	height: 130px;
 }
 
@@ -62,6 +66,27 @@ img.center {
 	width: 400px;
 	height: 100%;
 	margin: auto;
+}
+
+img.center1 {
+	display: inline-block;
+	width: 95%;
+	height: 95%;
+	padding: 2%;
+}
+
+img.center2 {
+	display: inline-block;
+	width: 45%;
+	height: 45%;
+	padding: 15px;
+}
+
+img.center3 {
+	display: inline-block;
+	width: 30%;
+	height: 30%;
+	padding: 12px;
 }
 
 #loading-gif {
@@ -97,6 +122,10 @@ img.center {
 p {
 	text-align: left;
 	color: black;
+}
+
+.center-txt {
+	text-align: center;
 }
 
 .code {
@@ -235,7 +264,7 @@ div.buttons {
 	left: -10px;
 	width: 100%;
 	padding: 20px;
-	background-color: #454545;
+	background-color: #4a4a4a;
 	border-bottom-width: 10px;
 	border-bottom-style: solid;
 	border-bottom-color: #313131;
@@ -273,7 +302,7 @@ div.buttons {
 	margin: auto;
 	padding: 20px;
 	border-color: #313131;
-	border-width: 5px;
+	border-width: 15px;
 	border-style: solid;
 	border-radius: 15px;
 }
