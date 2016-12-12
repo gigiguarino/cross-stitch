@@ -307,6 +307,10 @@ div.buttons {
 	border-radius: 15px;
 }
 
+#hide {
+	visibility: hidden;
+}
+
 div.form1 {
 	display: inline-block;
 	width: 525px;
