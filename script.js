@@ -8,7 +8,7 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/report1', {
 			templateUrl: 'report1.html'
 		})
-		.when('/report2', {
+		.when('/report2', {						
 			templateUrl: 'report2.html'
 		})
 		.when('/project',{
@@ -26,9 +26,29 @@ app.config(['$routeProvider', function($routeProvider) {
 		.otherwise( {
 			redirectTo: '/home'
 		});
-}])
+}]);
 
-app.controller('main-controller', ['$scope', '$http', function($scope, $http){
+app.factory('requesting', function($http) {
+		
+	var data = function(img_link, max_height, max_width, num_colors, fabric_count) {
+		return $http({
+			method: 'GET',
+			url: 'project.py',
+			params: {
+				img_link: img_link,
+				height: max_height,
+				width: max_width,
+				num_colors: num_colors,
+				fabric_count: fabric_count
+			}
+		});
+	};
+
+	return { data: data}
+});
+
+
+app.controller('main-controller', ['$scope', '$http', 'requesting', function($scope, $http, requesting){
 	$scope.submit = function() {
 		$scope.img_link = document.getElementById('image-link').value;
 		$scope.max_height = document.getElementById('max-height').value;
@@ -80,29 +100,24 @@ app.controller('main-controller', ['$scope', '$http', function($scope, $http){
 			alert(error_print);
 		} else {
 			document.getElementById("loading-gif").style.visibility = 'visible';
-			
-			$http({
-				method: 'POST',
-				url: 'project.py',
-				data: {
-					img_link:		$scope.img_link,
-					height: 		$scope.max_height,
-					width: 			$scope.max_width,
-					num_colors:     $scope.num_colors,
-					fabric_count:   $scope.fabric_count
-				}
-
-			}).then(function(response){
-				console.log(response);
-				console.log('here i am');
-			}, function(error) {
-				console.log(error);
-			});
-		}	
-
-		return;
+			$scope.my_function();
+		}
 	}
+
+
+	$scope.my_function = function() {
+		var recieved_data = requesting.data($scope.img_link, $scope.max_height, $scope.max_width, $scope.num_colors, $scope.fabric_count);
+		
+		recieved_data.then(function(result){
+			console.log(result.data);
+		}, 	function() {
+			console.log("didn't get data");
+		});
+	};
 }]);
+
+
+
 
 
 

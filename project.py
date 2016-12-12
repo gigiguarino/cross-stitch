@@ -1,24 +1,13 @@
-from flask import Flask, jsonify, render_template, request, send_file
-
-import matplotlib.pyplot as plt
+from flask import Flask, requests, send_file
 import matlab.engine
-import sys
 import os
+import sys
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
-# inputs
-# height
-# width
-# num colors
-# fabric count
-# symbols?
-# colored output?
-
-
-@app.route('/start')
+@app.route('/')
 def start_program():
-
 	img_url = request.args.get('img_url', 0, type=str)
 	height = request.args.get('height', 0, type=int)
 	width = request.args.get('width', 0, type=int)
@@ -88,10 +77,5 @@ def start_program():
 	return send_file('output.jpg', mimetype='image/jpeg')
 
 
-
-
-
-
-
-
-
+if __name__ == '__main__':
+	app.run()
