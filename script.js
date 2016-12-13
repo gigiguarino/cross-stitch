@@ -28,11 +28,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.factory('requesting', ['$http', function($http) {
 	
 	var data = function(params_in) {
-		return $http({
-			method: 'GET',
-			url: '',
-			params: params_in
-		});
+		console.log($)
 	};
 
 	return { data: data}

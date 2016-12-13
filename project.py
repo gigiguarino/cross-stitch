@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from flask import Flask
+from flask import request
 import matlab.engine
 import psycopg2
 import os
@@ -9,16 +10,8 @@ import sys
 app = Flask(__name__)
 
 
-@app.route('/')
-def start_program():
-	img_url = params['img-link']
-	height = params['height']
-	width = params['width']
-	num_colors = params['num-colors']
-	fabric_count = params['fabric-count']
 
-	height = height*fabric_count
-	width = width*fabric_count
+def start_program(img_link, height_in, width_in, num_colors):
 
 	eng = matlab.engine.start_matlab()
 
@@ -75,8 +68,23 @@ def start_program():
 	return send_file('output.jpg', mimetype='image/jpeg')
 
 
+
+@app.route('/create', methods=['GET'])
+def create():
+	img_link = str(request.get(''))
+	height = float(request.get(''))
+	width = float(request.get(''))
+	num_colors = float(request.get(''))
+	fabric_count = float(request.get(''))
+	image = start_program(img_link, height*fabric_count, width*fabric_count, num_colors)
+	return image
+
+
 if __name__ == '__main__':
 	app.run()
+
+
+
 
 
 
