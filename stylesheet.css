@@ -130,13 +130,23 @@ p {
 
 .code {
 	font-family: monospace;
-	color: #581A09;
+	color: #484a8d;
 }
 
 .caption {
-	font-size: 12px;
+	font-size: 15px;
 	text-align: center;
+	color: #747474;
 }
+
+.caption2 {
+	font-size: 15px;
+	text-align: left;
+	color: #747474;
+}
+
+
+
 
 
 

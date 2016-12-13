@@ -70,10 +70,10 @@ def start_program():
 	eng.workspace['num_colors'] = num_colors
 	eng.eval("cross_stitch(img, new_height, new_width, num_colors);", nargout=0)
 
-	#print "\n"
-	#print "Finished"
-	#print "Cross stitch image is saved in directory as 'output.jpg'"
-	#print "Symbol image is saved in directory as 'symbols.txt'\n\n"
+	print "\n"
+	print "Finished"
+	print "Cross stitch image is saved in directory as 'output.jpg'"
+	print "Symbol image is saved in directory as 'symbols.txt'\n\n"
 
 	return send_file('output.jpg', mimetype='image/jpeg')
 
