@@ -27,7 +27,8 @@ function symbols(image)
             break
         end
         pos = [0 (height2-num) width2 1];
-        pos1 = ds2nfu(pos);
+        pos1 = ds2nfu(pos); % function from matlab file exchange online
+        % it transforms x and y axis points to normalized axis points
         annotation(fig, 'textbox', pos1, 'String', line, 'LineStyle', 'none', 'FontName', 'FixedWidth', 'FontUnits', 'normalized', 'FontSize', 0.025);
         num = num + 1;
     end

@@ -1,13 +1,10 @@
 #!/usr/bin/python
 
-from flask import Flask, send_file
+from flask import Flask
 import matlab.engine
+import psycopg2
 import os
-import cgitb; cgitb.enable()
-from wsgiref.handlers import CGIHandler
 import sys
-import traceback
-import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
